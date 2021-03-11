@@ -54,11 +54,14 @@ def sc(event):
             result=str(m.pi)
         else:
             result=str(float(no) * m.pi)
-    if text=='e':
+    if text=='e':                              
         if no=="":
             result=str(m.e)
         else:
             result=str(m.e**float(no))
+
+    e.delete(0, END)
+    e.insert(0, result)
 
 
 
