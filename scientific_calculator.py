@@ -73,5 +73,106 @@ class Calc:
         self.op = op
         self.result = False
 
+    #Display Functions
+
+    def display(self,value):
+        txtDisplay.delete(0,END)
+        txtDisplay.insert(0,value)
+
+    def clear_entry(self):
+        self.result = False
+        self.current = '0'
+        self.display(0)
+        self.ip_val = True
+
+    def clear_all(self):
+        self.clear_entry()
+        self.total = 0
+
+    #Functions for constants
+    def pi(self):
+        self.result = False
+        self.current = math.pi
+        self.display(self.current)
+
+    def e(self):
+        self.result = False
+        self.current = math.e
+        self.display(self.current)
+
+    #Functions for Calculations
+    def PM(self):
+        self.result = False
+        self.current = -(float(txtDisplay.get()))
+        self.display(self.current)
+
+    def sq_rt(self):
+        self.result = False
+        self.current = math.sqrt(float(txtDisplay.get()))
+        self.display(self.current)
+
+    def ln(self):
+        self.result = False
+        self.current = math.log(float(txtDisplay.get()))
+        self.display(self.current)
+
+    def log(self):
+        self.result = False
+        self.current = math.log10(float(txtDisplay.get()))
+        self.display(self.current)
+
+    def log2(self):
+        self.result = False
+        self.current = math.log2(float(txtDisplay.get()))
+        self.display(self.current)
+
+    def exp(self):
+        self.result = False
+        self.current = math.exp(math.radians(float(txtDisplay.get())))
+        self.display(self.current)
+
+    def sin(self):
+        self.result = False
+        self.current = math.sin(math.radians(float(txtDisplay.get())))
+        self.display(self.current)
+
+    def cos(self):
+        self.result = False
+        self.current = math.cos(math.radians(float(txtDisplay.get())))
+        self.display(self.current)
+
+    def tan(self):
+        self.result = False
+        self.current = math.tan(math.radians(float(txtDisplay.get())))
+        self.display(self.current)
+
+    def sinh(self):
+        self.result = False
+        self.current = math.sinh(math.radians(float(txtDisplay.get())))
+        self.display(self.current)
+
+    def cosh(self):
+        self.result = False
+        self.current = math.cosh(math.radians(float(txtDisplay.get())))
+        self.display(self.current)
+
+    def tanh(self):
+        self.result = False
+        self.current = math.tanh(math.radians(float(txtDisplay.get())))
+        self.display(self.current)
+
+    def degrees(self):
+        self.result = False
+        self.current = math.degrees(float(txtDisplay.get()))
+        self.display(self.current)
+
+    def radians(self):
+        self.result = False
+        self.current = math.radians(float(txtDisplay.get()))
+        self.display(self.current)
+
+res = Calc()
+
+
 
 root.mainloop()
