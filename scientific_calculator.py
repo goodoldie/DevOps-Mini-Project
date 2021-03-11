@@ -57,6 +57,8 @@ class Calc:
             self.total /= self.current
         elif self.op == 'mod':
             self.total %= self.current
+        elif self.op == 'exp':
+            self.total = pow(self.total, self.current)
 
         self.ip_val = True
         self.check_sum = False
@@ -126,10 +128,11 @@ class Calc:
         self.current = math.log2(float(txtDisplay.get()))
         self.display(self.current)
 
-    def exp(self):
-        self.result = False
-        self.current = math.exp(math.radians(float(txtDisplay.get())))
-        self.display(self.current)
+    # def exp(self):
+    #     self.num = float(txtDisplay.get())
+    #     self.result=False
+    #     self.current=self.num ** (float(txtDisplay.get()))
+    #     self.display(self.current)
 
     def sin(self):
         self.result = False
@@ -217,7 +220,7 @@ Button(calc,text='cosh',width=6,height=2,font=('arial',20,'bold'),bd=4,bg="gray2
 Button(calc,text='tanh',width=6,height=2,font=('arial',20,'bold'),bd=4,bg="gray20",command = res.tanh).grid(row=3,column=6,pady=1)
 
 Button(calc,text='ln',width=6,height=2,font=('arial',20,'bold'),bd=4,bg="gray20",command = res.ln).grid(row=4,column=5,pady=1)
-Button(calc,text='exp',width=6,height=2,font=('arial',20,'bold'),bd=4,bg="gray20",command = res.exp).grid(row=1,column=6,pady=1)
+Button(calc,text='exp',width=6,height=2,font=('arial',20,'bold'),bd=4,bg="gray20",command = lambda: res.operation('exp')).grid(row=1,column=6,pady=1)
 Button(calc,text='mod',width=6,height=2,font=('arial',20,'bold'),bd=4,bg="gray20",command = lambda: res.operation('mod')).grid(row=5,column=6,pady=1)
 Button(calc,text='e',width=6,height=2,font=('arial',20,'bold'),bd=4,bg="gray20",command = res.e).grid(row=1,column=5,pady=1)
 
