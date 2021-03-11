@@ -1,68 +1,77 @@
-from tkinter import *  #import this module for GUI
-import math as m       #import this for all mathematical functions
-root=Tk
+from tkinter import *
+import math
+import parser
+import tkinter.messagebox
+
+root = Tk()
 root.title("Scientific DevOps Calculator")
-e = Entry(root, width=50, borderwidth=5, relief=RIDGE, fg="White", bg="Black")
-e.grid(row=0, column=0, columnspan=5, padx=10,pady=15)
+root.configure(background="Powder blue")
+root.resizable(width=False,height=False)
+root.geometry("480x568+0+0")
 
-def click(to_print):
-    old=e.get()
-    e.delete(0, END)           #delete everything on screen
-    e.insert(0, old+to_print)  #to print num positions correctly
-    return
+calc = Frame(root)
+calc.grid()
 
-def clear():
-    e.delete(0, END)
-    return
+#Calculator Classes and methods
 
-def bkspace():
-    current=e.get()
-    length=len(current)-1
-    e.delete(length, END)
+class Calc:
+    def __init__(self):
+        self.total = 0
+        self.current = ''
+        self.ip_val = True
+        self.check_sum = False
+        self.op = ''
+        self.result = False
 
-def evaluate():
-    ans=e.get()
-    ans=eval(ans)
-    e.delete(0, END)
-    e.insert(0, ans)
+    def numberEnter(self,num):
+        self.result = False
+        first_num = txtDisplay.get()
+        second_num = str(num)
 
-def sc(event):
-    key=event.widget
-    text=key['text']
-    no=e.get()
-    result=''
-    if text=='deg':
-        result=str(m.degrees(float(no)))
-    if text=='sin':
-        result=str(m.sin(float(no)))
-    if text=='cos':
-        result=str(m.cos(float(no)))
-    if text=='tan':
-        result=str(m.tan(float(no)))
-    if text=='lg':
-        result=str(m.log10(float(no)))
-    if text=='ln':
-        result=str(m.log(float(no)))
-    if text=='Sqrt':
-        result=str(m.sqrt(float(no)))
-    if text=='x!':
-        result=str(m.factorial(float(no)))
-    if text=='1/x':
-        result=str(1/(float(no)))
-    if text=='pi':
-        if no=="":
-            result=str(m.pi)
+        if self.ip_val:
+            self.current = second_num
+            self.ip_val = False
         else:
-            result=str(float(no) * m.pi)
-    if text=='e':                              
-        if no=="":
-            result=str(m.e)
+            if second_num == '.':
+                if second_num in first_num:
+                    return
+            self.current = first_num + second_num
+        self.display(self.current)
+
+    def sum_of_total(self):
+        self.result = True
+        self.current = float(self.current)
+        if self.check_sum:
+            self.valid_function()
         else:
-            result=str(m.e**float(no))
+            self.total = float(txtDisplay.get())
 
-    e.delete(0, END)
-    e.insert(0, result)
+    def valid_function(self):
+        if self.op == 'add':
+            self.total += self.current
+        elif self.op == 'sub':
+            self.total -= self.current
+        elif self.op == 'mul':
+            self.total *= self.current
+        elif self.op == 'div':
+            self.total /= self.current
+        elif self.op == 'mod':
+            self.total %= self.current
 
+        self.ip_val = True
+        self.check_sum = False
+        self.display(self.total)
+
+    def operation(self,op):
+        self.current = float(self.current)
+        if self.check_sum:
+            self.valid_function()
+        elif not self.result:
+            self.total = self.current
+            self.ip_val = True
+        self.check_sum = True
+        self.op = op
+        self.result = False
 
 
 root.mainloop()
