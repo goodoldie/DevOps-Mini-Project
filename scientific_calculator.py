@@ -30,7 +30,7 @@ num4 = 8
 sqrt_result = square_root(num1)
 logging.debug('Square Root of {} = {}'.format(num1, sqrt_result))
 
-#Un-comment this block to get exception in log
+# Un-comment this block to get exception in log
 # try:
 #     fact_result = factorial(num3)
 # except Exception as e:
