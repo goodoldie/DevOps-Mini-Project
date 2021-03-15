@@ -1,16 +1,23 @@
-# Python CircleCI 2.0 configuration file
-version: 2
-jobs:
-  build:
+# Python CircleCI 2.1 configuration file
+version: 2.1
+executors:
+  docker-publisher:
+    environment:
+      IMAGE_NAME: goodoldie1996/building-on-ci
     docker:
       - image: circleci/python:3.7
+jobs:
+  build:
+    executor: docker-publisher
 
     working_directory: ~/repo
 
     steps:
       # Step 1: obtain repo from GitHub
       - checkout
-      # Step 2: create virtual env and install dependencies
+      # Step 2: setup remote docker engine
+      - setup_remote_docker
+      # Step 3: create virtual env and install dependencies
       - run:
           name: install dependencies
           command: |
@@ -24,3 +31,50 @@ jobs:
             . venv/bin/activate
             flake8 --exclude=venv* --statistics
             pytest -v --cov=scientific_calculator
+      # Step 4: Build Docker Image
+      - run:
+          name: Build Docker image
+          command: |
+            docker build -t $IMAGE_NAME:latest .
+
+      - run:
+        name: Archive Docker image
+        command: docker save -o image.tar $IMAGE_NAME
+
+      - persist_to_workspace:
+          root: .
+          paths:
+            - ./image.tar
+
+  publish-latest:
+    executor: docker-publisher
+
+    steps:
+      - attach_workspace:
+          at: /tmp/workspace
+
+      - setup_remote_docker
+
+      - run:
+          name: Load archived Docker image
+          command: docker load -i /tmp/workspace/image.tar
+
+      - run:
+          name: Publish Docker Image to Docker Hub
+          command: |
+            echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
+            docker push $IMAGE_NAME:latest
+workflows:
+  version: 2
+  build-master:
+    jobs:
+      - build:
+          filters:
+            branches:
+              only: master
+      - publish-latest:
+          requires:
+            - build
+          filters:
+            branches:
+              only: master
