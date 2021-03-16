@@ -10,7 +10,7 @@ jobs:
   build:
     # executor: docker-publisher
     environment:
-      IMAGE_NAME: goodoldie1996/devops-calcy
+      IMAGE_NAME: goodoldie1996/devops_mini_project
     docker:
       - image: circleci/python:3.7
     working_directory: ~/repo
