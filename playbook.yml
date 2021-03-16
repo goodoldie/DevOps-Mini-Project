@@ -1,0 +1,8 @@
+---
+- name: Pull docker image
+  hosts: all
+  tasks:
+    - name: Pull image of working project from dockerhub
+      docker_image:
+        name: goodoldie1996/devops_mini_project
+        source: pull
