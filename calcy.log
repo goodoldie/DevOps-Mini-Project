@@ -31,11 +31,35 @@ DEBUG:root:25 Raised to Power 3 = 5.0
 2021-03-13 21:29:02,231:DEBUG:3 Raised to Power 8 = 12.0
 2021-03-13 21:29:37,555:DEBUG:Square Root of 144 = 12.0
 2021-03-13 21:29:37,555:ERROR:Exception Occured
-Traceback (most recent call last):
-  File "/home/kali/DevOps_Mini_Project/code/DevOps-Mini-Project/scientific_calculator.py", line 34, in <module>
-    fact_result = factorial(num3)
-  File "/home/kali/DevOps_Mini_Project/code/DevOps-Mini-Project/scientific_calculator.py", line 14, in factorial
-    return m.factorial(x)
-ValueError: factorial() not defined for negative values
 2021-03-13 21:29:37,555:DEBUG:Natural Log of 144 = 4.969813299576001
 2021-03-13 21:29:37,555:DEBUG:3 Raised to Power 8 = 12.0
+2021-03-17 11:54:46,012:DEBUG:Square root of 144 = 12.0
+2021-03-17 11:54:46,048:DEBUG:Square Root of 144 = 12.0
+2021-03-17 11:54:46,048:DEBUG:Factorial of 8.0 = 40320
+2021-03-17 11:54:46,048:DEBUG:Factorial of 8 = 40320
+2021-03-17 11:54:46,048:DEBUG:Natural Log of 144 = 4.969813299576001
+2021-03-17 11:54:46,048:DEBUG:Natural Log of 144 = 4.969813299576001
+2021-03-17 11:54:46,048:DEBUG:144 to power of 3 = 2985984
+2021-03-17 11:54:46,048:DEBUG:3 Raised to Power 8 = 12.0
+2021-03-17 11:54:53,745:DEBUG:Factorial of 2.2 = Cannot be calulated since it is a Decimal Number
+2021-03-17 11:55:54,043:DEBUG:Square root of 144 = 12.0
+2021-03-17 11:55:54,044:DEBUG:Square Root of 144 = 12.0
+2021-03-17 11:55:54,044:DEBUG:Factorial of 8.0 = 40320
+2021-03-17 11:55:54,044:DEBUG:Factorial of 8 = 40320
+2021-03-17 11:55:54,044:DEBUG:Natural Log of 144 = 4.969813299576001
+2021-03-17 11:55:54,044:DEBUG:Natural Log of 144 = 4.969813299576001
+2021-03-17 11:55:54,044:DEBUG:144 to power of 3 = 2985984
+2021-03-17 11:55:54,044:DEBUG:3 Raised to Power 8 = 12.0
+2021-03-17 11:55:58,447:DEBUG:Natural Log of 45.0 = 3.8066624897703196
+2021-03-17 11:56:04,497:DEBUG:2.0 to power of 9.0 = 512.0
+2021-03-17 12:23:20,022:DEBUG:Square root of 144 = 12.0
+2021-03-17 12:23:20,049:DEBUG:Square Root of 144 = 12.0
+2021-03-17 12:23:20,049:DEBUG:Factorial of 8.0 = 40320
+2021-03-17 12:23:20,049:DEBUG:Factorial of 8 = 40320
+2021-03-17 12:23:20,050:DEBUG:Natural Log of 144 = 4.969813299576001
+2021-03-17 12:23:20,050:DEBUG:Natural Log of 144 = 4.969813299576001
+2021-03-17 12:23:20,050:DEBUG:144 to power of 3 = 2985984
+2021-03-17 12:23:20,050:DEBUG:3 Raised to Power 8 = 12.0
+2021-03-17 12:23:27,659:DEBUG:Factorial of 12.0 = 479001600
+2021-03-17 12:23:30,291:DEBUG:Fact. of 2.2 invalid as it's Decimal
+2021-03-17 12:23:33,944:DEBUG:Factorial of 10.0 = 3628800
