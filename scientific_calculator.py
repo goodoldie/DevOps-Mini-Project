@@ -49,22 +49,3 @@ def power(x, y):
     ans = (x ** y)
     logging.debug('{} to power of {} = {}'.format(x, y, ans))
     return ans
-
-
-num1 = 144
-num2 = 3
-num3 = -4
-num4 = 8
-
-sqrt_result = square_root(num1)
-logging.debug('Square Root of {} = {}'.format(num1, sqrt_result))
-
-
-fact_result = factorial(num4)
-logging.debug('Factorial of {} = {}'.format(num4, fact_result))
-
-ln_result = natural_log(num1)
-logging.debug('Natural Log of {} = {}'.format(num1, ln_result))
-
-pow_result = power(num1, num2)
-logging.debug('{} Raised to Power {} = {}'.format(num2, num4, sqrt_result))
